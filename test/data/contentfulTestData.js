@@ -1,0 +1,9 @@
+const TEST_PRODUCT_ID = "36B99qCcEg0s4iW6Y0SQKi";
+const PRODUCT_SIZE_COLOR_ID = "4SAxgTq1h6gygYo8mkAouO";
+const TEST_FRAGANCE_ID = "5aYSlUgdcsMoKoMQQgS0YQ";
+
+module.exports = {
+  TEST_FRAGANCE_ID,
+  TEST_PRODUCT_ID,
+  PRODUCT_SIZE_COLOR_ID
+};
