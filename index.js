@@ -6,13 +6,13 @@ const {
 } = require('./conektaApi');
 
 /**
- * @param {Array.<EssentaProduct>} productList
+ * @param {Array.<EssentaProduct>} essentaProductList
  * @param {Array.<ConektaCustomer>} customerData 
  * @param {Array.<ConektaPaymentData>} paymentData 
  */
-function createEssentaOrder(productList, customerData, paymentData) {
+function createEssentaOrder(essentaProductList, customerData, paymentData) {
   return new Promise(function(resolve, reject) {
-    const productValidation = validateProductList(productList);
+    const productValidation = validateProductList(essentaProductList);
     const customerValidation = validateConektaCustomer(customerData);
     const paymentDataValidation = validateConektaPaymentData(paymentData);
 
@@ -28,7 +28,20 @@ function createEssentaOrder(productList, customerData, paymentData) {
         });
       }
 
-    
+    const conektaReadyProducts = createConektaReadyProducts(essentaProductList);
+  });
+}
+
+function createConektaReadyProducts(essentaProductList) {
+  return essentaProductList.map(product => {
+    const sizeData = getDataById(product.sizeId);
+
+    return {
+      name: `${product.productTypeName} ${product.fraganceName} ${sizeData.sizeName}`,
+      unit_price: sizeData.sizePrice,
+      quantity: product.amount,
+      description: `${product.amount} ${product.productTypeName} ${product.fraganceName} ${sizeData.sizeName} ${product.colorName}`
+    };
   });
 }
 

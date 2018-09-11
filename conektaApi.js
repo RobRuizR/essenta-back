@@ -64,6 +64,11 @@ function validateConektaPaymentData(paymentData) {
   };
 }
 
+// Todo
+function paymentAcceptedWebhook() {
+  
+}
+
 module.exports = {
   createConektaCustomer,
   createConektaOrder,

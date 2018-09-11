@@ -8,8 +8,8 @@ const client = contentful.createClient({
   accessToken: process.env.ACCESS_TOKEN
 });
 
-function getDataById(productId) {
-  return client.getEntry(productId)
+function getDataById(dataId) {
+  return client.getEntry(dataId)
     .then(({fields}) => fields)
     .catch((error) => {
       console.error(error)

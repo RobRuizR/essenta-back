@@ -1,9 +1,9 @@
 /**
 * @typedef EssentaProduct
-* @property {string} colorId - Id of the Contentful color object.
 * @property {string} sizeId - Id of the Contentful size object.
-* @property {string} fraganceId - Id of the Contentful fragance object.
-* @property {string} productTypeId - Id of the Contentful product object.
+* @property {string} fraganceName - Name of the Contentful fragance object.
+* @property {string} colorName - Name of the Contentful color object.
+* @property {string} productTypeName - Name of the Contentful product object.
 * @property {number} amount - Amount of products requested by the customer.
 */
 
@@ -22,3 +22,12 @@
  *                                        the card token. Tokenized via the 
  *                                        conekta tokenization library.
  */
+
+ /**
+  * @typedef ConektaProduct
+  * @property {string} name
+  * @property {number} unit_price
+  * @property {number} quantity
+  * @property {string} description - Less than 250 characters. Includes all data
+  *                                 for the current product
+  */
