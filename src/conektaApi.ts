@@ -1,9 +1,12 @@
-var conekta = require('conekta');
+//@ts-ignore
+import conekta from 'conekta';
+import { Promise } from 'es6-promise';
+import { ConektaCustomer } from './types';
 
 conekta.api_key = process.env.CONEKTA_API_KEY || "key_eYvWV7gSDkNYXsmr";
 
-function createConektaCustomer(customerData) {
-  return new Promise(function(resolve, reject) {
+function createConektaCustomer(customerData: ConektaCustomer) {
+  return new Promise(function(resolve: Function, reject: Function) {
     const hasValidAddressData =
       customerHasValidShippingAddressData(customerData.shipping_contacts);
       
@@ -17,7 +20,7 @@ function createConektaCustomer(customerData) {
       });
     }
 
-    conekta.Customer.create(customerData, function(error, customer) {
+    conekta.Customer.create(customerData, function(error: any, customer: any) {
       if(error) {
         return reject(error);
       }
@@ -27,18 +30,22 @@ function createConektaCustomer(customerData) {
   });
 }
 
-function customerPaymentDataIsValid(customerPaymentData) {
+function customerPaymentDataIsValid(
+  customerPaymentData: Array<any>
+) {
   return !!customerPaymentData && customerPaymentData.length > 0;
 }
 
-function customerHasValidShippingAddressData(customerShippingAddressData) {
+function customerHasValidShippingAddressData(
+  customerShippingAddressData: Array<any>
+) {
   return !!customerShippingAddressData && customerShippingAddressData.length > 0;
 }
 
 // Es posible crear una orden directamente, sin necesidad de crear un cliente antes.
-function createConektaOrder(orderData) {
-  return new Promise(function(resolve, reject) {
-    conekta.Order.create(orderData, function(error, order) {
+function createConektaOrder(orderData: any): Promise<any> {
+  return new Promise(function(resolve: Function, reject: Function) {
+    conekta.Order.create(orderData, function(error: any, order: any) {
       if(error) {
         return reject(error);
       }
@@ -49,7 +56,7 @@ function createConektaOrder(orderData) {
 }
 
 // Todo
-function validateConektaCustomer(customer) {
+function validateConektaCustomer(customer: Object) : Object{
   return {
     valid: true,
     reason: null,
@@ -57,7 +64,7 @@ function validateConektaCustomer(customer) {
 }
 
 // Todo
-function validateConektaPaymentData(paymentData) {
+function validateConektaPaymentData(paymentData: Object) : Object {
   return {
     valid: true,
     reason: null,
@@ -69,7 +76,7 @@ function paymentAcceptedWebhook() {
   
 }
 
-module.exports = {
+export default {
   createConektaCustomer,
   createConektaOrder,
   validateConektaCustomer,

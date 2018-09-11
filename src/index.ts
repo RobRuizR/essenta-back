@@ -1,17 +1,23 @@
-require('dotenv').config();
-require('./docs/jsdocTypedef');
-const { 
+import dotenv = require('dotenv');
+import { getDataById } from './contentfulApi';
+import { 
+  EssentaProduct, 
+  ConektaCustomer, 
+  ConektaPaymentData 
+} from './types';
+import { 
   validateConektaCustomer,
   validateConektaPaymentData
-} = require('./conektaApi');
+} from './conektaApi';
 
-/**
- * @param {Array.<EssentaProduct>} essentaProductList
- * @param {Array.<ConektaCustomer>} customerData 
- * @param {Array.<ConektaPaymentData>} paymentData 
- */
-function createEssentaOrder(essentaProductList, customerData, paymentData) {
-  return new Promise(function(resolve, reject) {
+dotenv.config();
+
+function createEssentaOrder(
+  essentaProductList: Array<EssentaProduct>, 
+  customerData: Array<ConektaCustomer>, 
+  paymentData: Array<ConektaPaymentData>
+) : Promise<any> {
+  return new Promise(function(resolve: Function, reject: Function) {
     const productValidation = validateProductList(essentaProductList);
     const customerValidation = validateConektaCustomer(customerData);
     const paymentDataValidation = validateConektaPaymentData(paymentData);
@@ -32,7 +38,9 @@ function createEssentaOrder(essentaProductList, customerData, paymentData) {
   });
 }
 
-function createConektaReadyProducts(essentaProductList) {
+function createConektaReadyProducts(
+  essentaProductList: Array<EssentaProduct>
+) {
   return essentaProductList.map(product => {
     const sizeData = getDataById(product.sizeId);
 
@@ -45,7 +53,9 @@ function createConektaReadyProducts(essentaProductList) {
   });
 }
 
-function validateProductList(productList) {
+function validateProductList(
+  productList: any
+) {
   if(!productList.length || productList.length === 0) {
     return {
       valid: false,
@@ -58,7 +68,7 @@ function validateProductList(productList) {
     reason: null
   };
 
-  productList.forEach((product) => {
+  productList.forEach((product: any) => {
     if(!!product.colorId &&
         !!product.sizeId &&
         !!product.fraganceId &&

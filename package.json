@@ -2,10 +2,8 @@
   "name": "essenta-backend",
   "version": "1.0.0",
   "description": "Backend for Essenta's website",
-  "main": "index.js",
+  "main": "src/index",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
     "test": "mocha",
     "doc": "jsdoc -c jsdoc.conf.json -r . --verbose"
   },
@@ -28,6 +26,7 @@
   },
   "homepage": "https://github.com/RobRuizR/essenta-back",
   "dependencies": {
+    "@types/dotenv": "^4.0.3",
     "chalk": "^1.1.3",
     "cli-table2": "^0.2.0",
     "conekta": "^3.5.1",
@@ -35,8 +34,11 @@
     "dotenv": "^6.0.0"
   },
   "devDependencies": {
+    "@types/es6-promise": "^3.3.0",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
+    "gulp": "^4.0.0",
+    "gulp-typescript": "^5.0.0-alpha.3",
     "nodemon": "^1.11.0"
   }
 }

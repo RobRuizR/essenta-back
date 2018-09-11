@@ -1,5 +1,4 @@
-const contentful = require('contentful');
-const chalk = require('chalk');
+const contentful: any = require('contentful');
 
 const client = contentful.createClient({
   // This is the space ID. A space is like a project folder in Contentful terms
@@ -8,14 +7,10 @@ const client = contentful.createClient({
   accessToken: process.env.ACCESS_TOKEN
 });
 
-function getDataById(dataId) {
+export function getDataById (dataId: string) : Object {
   return client.getEntry(dataId)
-    .then(({fields}) => fields)
-    .catch((error) => {
+    .then(({fields}: any) => fields)
+    .catch((error: any) => {
       console.error(error)
     });
 }
-
-module.exports = {
-  getDataById,
-};
