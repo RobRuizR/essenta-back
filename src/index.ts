@@ -1,4 +1,6 @@
-import dotenv = require('dotenv');
+//@ts-ignore
+import dotenv from ('dotenv');
+//@ts-ignore
 import { Promise } from 'es6-promise';
 import { getDataById } from './contentfulApi';
 import { 
@@ -56,7 +58,7 @@ function createConektaReadyProducts(
 
 function validateProductList(
   productList: any
-) {
+) : any {
   if(!productList.length || productList.length === 0) {
     return {
       valid: false,

@@ -5,7 +5,7 @@ const chaiAsPromised = require('chai-as-promised');
 const { 
   createConektaCustomer,
   createConektaOrder
-} = require("../conektaApi");
+} = require("../dist/conektaApi");
 
 // Chai configuration
 const expect = chai.expect;

@@ -7,7 +7,7 @@ const client = contentful.createClient({
   accessToken: process.env.ACCESS_TOKEN
 });
 
-export function getDataById (dataId: string) : Object {
+export function getDataById (dataId: string) : any {
   return client.getEntry(dataId)
     .then(({fields}: any) => fields)
     .catch((error: any) => {

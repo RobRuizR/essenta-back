@@ -3,7 +3,7 @@ const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 
 // APIs to test
-const { getDataById } = require("../contentfulApi");
+const { getDataById } = require("../dist/contentfulApi");
 
 // Chai configuration
 const expect = chai.expect;

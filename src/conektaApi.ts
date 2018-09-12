@@ -1,7 +1,8 @@
 //@ts-ignore
-import conekta from 'conekta';
 import { Promise } from 'es6-promise';
 import { ConektaCustomer } from './types';
+
+const conekta = require('conekta');
 
 conekta.api_key = process.env.CONEKTA_API_KEY || "key_eYvWV7gSDkNYXsmr";
 
@@ -43,7 +44,7 @@ function customerHasValidShippingAddressData(
 }
 
 // Es posible crear una orden directamente, sin necesidad de crear un cliente antes.
-function createConektaOrder(orderData: any): Promise<any> {
+export function createConektaOrder(orderData: any): Promise<any> {
   return new Promise(function(resolve: Function, reject: Function) {
     conekta.Order.create(orderData, function(error: any, order: any) {
       if(error) {
@@ -56,7 +57,7 @@ function createConektaOrder(orderData: any): Promise<any> {
 }
 
 // Todo
-export function validateConektaCustomer(customer: Object) : Object{
+export function validateConektaCustomer(customer: Object) : any{
   return {
     valid: true,
     reason: null,
@@ -64,7 +65,7 @@ export function validateConektaCustomer(customer: Object) : Object{
 }
 
 // Todo
-export function validateConektaPaymentData(paymentData: Object) : Object {
+export function validateConektaPaymentData(paymentData: Object) : any {
   return {
     valid: true,
     reason: null,

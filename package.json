@@ -4,7 +4,8 @@
   "description": "Backend for Essenta's website",
   "main": "src/index",
   "scripts": {
-    "test": "mocha",
+    "build": "gulp",
+    "test": "gulp & mocha",
     "doc": "jsdoc -c jsdoc.conf.json -r . --verbose"
   },
   "repository": {
@@ -35,10 +36,14 @@
   },
   "devDependencies": {
     "@types/es6-promise": "^3.3.0",
+    "awesome-typescript-loader": "^5.2.1",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "gulp": "^4.0.0",
     "gulp-typescript": "^5.0.0-alpha.3",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "source-map-loader": "^0.2.4",
+    "typescript": "^3.1.0-dev.20180912",
+    "webpack-cli": "^3.1.0"
   }
 }
