@@ -5,7 +5,7 @@ import { ConektaCustomer } from './types';
 
 conekta.api_key = process.env.CONEKTA_API_KEY || "key_eYvWV7gSDkNYXsmr";
 
-function createConektaCustomer(customerData: ConektaCustomer) {
+export function createConektaCustomer(customerData: ConektaCustomer) {
   return new Promise(function(resolve: Function, reject: Function) {
     const hasValidAddressData =
       customerHasValidShippingAddressData(customerData.shipping_contacts);
@@ -56,7 +56,7 @@ function createConektaOrder(orderData: any): Promise<any> {
 }
 
 // Todo
-function validateConektaCustomer(customer: Object) : Object{
+export function validateConektaCustomer(customer: Object) : Object{
   return {
     valid: true,
     reason: null,
@@ -64,7 +64,7 @@ function validateConektaCustomer(customer: Object) : Object{
 }
 
 // Todo
-function validateConektaPaymentData(paymentData: Object) : Object {
+export function validateConektaPaymentData(paymentData: Object) : Object {
   return {
     valid: true,
     reason: null,
@@ -72,13 +72,6 @@ function validateConektaPaymentData(paymentData: Object) : Object {
 }
 
 // Todo
-function paymentAcceptedWebhook() {
+export function paymentAcceptedWebhook() {
   
 }
-
-export default {
-  createConektaCustomer,
-  createConektaOrder,
-  validateConektaCustomer,
-  validateConektaPaymentData
-};

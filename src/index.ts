@@ -1,4 +1,5 @@
 import dotenv = require('dotenv');
+import { Promise } from 'es6-promise';
 import { getDataById } from './contentfulApi';
 import { 
   EssentaProduct, 
